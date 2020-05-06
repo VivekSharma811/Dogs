@@ -3,7 +3,6 @@ package com.hypheno.dogs.viewmodel
 import android.app.Application
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.hypheno.dogs.model.DogBreed
 import com.hypheno.dogs.model.DogDatabase
 import com.hypheno.dogs.model.DogsApiService
