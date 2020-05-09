@@ -15,7 +15,7 @@ import com.hypheno.dogs.R
 import com.hypheno.dogs.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 
-class ListFragment : Fragment() {
+class GridFragment : Fragment() {
 
     private lateinit var viewModel : ListViewModel
     private val dogsListAdapter = DogsListAdapter(arrayListOf())
@@ -24,7 +24,7 @@ class ListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_list, container, false)
+        return inflater.inflate(R.layout.fragment_grid, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,7 +34,7 @@ class ListFragment : Fragment() {
         viewModel.refresh()
 
         dogsList.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = GridLayoutManager(context, 4, RecyclerView.HORIZONTAL, false)
             adapter = dogsListAdapter
         }
 
@@ -73,6 +73,21 @@ class ListFragment : Fragment() {
                 }
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.list_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.actionSettings -> {
+                view?.let { Navigation.findNavController(it).navigate(ListFragmentDirections.actionSettingsFragment()) }
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
 }

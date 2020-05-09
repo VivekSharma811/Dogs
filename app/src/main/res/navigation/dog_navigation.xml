@@ -21,6 +21,9 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/actionListToGrid"
+            app:destination="@id/gridFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -41,4 +44,12 @@
         android:name="com.hypheno.dogs.view.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/gridFragment"
+        android:name="com.hypheno.dogs.view.GridFragment"
+        android:label="GridFragment" >
+        <action
+            android:id="@+id/actionGridToSetting"
+            app:destination="@id/settingsFragment" />
+    </fragment>
 </navigation>
